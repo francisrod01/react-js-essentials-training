@@ -1,0 +1,5 @@
+# VsCode features
+.history/
+
+# VsCode editor config
+.editorconfig
