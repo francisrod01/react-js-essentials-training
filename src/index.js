@@ -11,7 +11,7 @@ render(
     id='title'
     className='header'
     style={style}>
-    Hello World
+    HEY WORLD!
   </h1>,
   document.getElementById('react-container')
 )

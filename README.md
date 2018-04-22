@@ -255,7 +255,7 @@ my-app
 7 - Run the start command on the console to execute our app again.
 
 ```bash
-~$ $ serve -s ./dist -p 3000
+~$ serve -s ./dist -p 3000
 
    ┌───────────────────────────────────────────────────┐
    │                                                   │
@@ -269,6 +269,101 @@ my-app
    └───────────────────────────────────────────────────┘
 ```
 
+## Improve building using Webpack ##
+
+You can improve the code transpilling process with Babel using webpack.
+
+### What is webpack ###
+
+Webpack is used to compile JavaScript modules.
+
+Once installed, you can interface with webpack either from its CLI or API.
+
+### How to install webpack on my project ###
+
+```bash
+~$ yarn add webpack@1.13.3 -D
+~$ yarn add babel-loader@6.2.5 -D
+~$ yarn add webpack-dev-server@1.16.2 -D
+```
+
+### How to config webpack to build ###
+
+Create a `webpack.config.js` file on the root path to our project
+
+```js
+var webpack = require('webpack')
+
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    path: "dist/assets",
+    filename: "bundle.js",
+    publicPath: "assets"
+  },
+  devServer: {
+    inline: true,
+    contentBase: "./dist/",
+    port: 3000
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        loader: ["babel-loader"],
+        query: {
+          presets: ["latest", "stage-0", "react"]
+        }
+      }
+    ]
+  }
+}
+```
+
+Now our `bundle.js` is in `./dist/assets` path, so we need to change it in our `index.html` file.
+
+Before webpack
+
+```html
+<script type="text/javascript" src="bundle.js"></script>
+```
+
+After install and configure webpack
+
+```html
+<script type="text/javascript" src="assets/bundle.js"></script>
+```
+
+### Running webpack-dev-server ###
+
+And change our `start` command on `package.json` file to running using `webpack-dev-server`
+
+```json
+"scripts": {
+  "start": "./node_modules/.bin/webpack-dev-server"
+}
+```
+
+Running the `start` command we receive the webpack output as below:
+
+```bash
+$ ./node_modules/.bin/webpack-dev-server
+ http://localhost:3000/
+webpack result is served from /assets
+content is served from ./dist/
+Hash: 3ab4f982cf78411c2fb9
+Version: webpack 1.13.3
+Time: 857ms
+    Asset    Size  Chunks             Chunk Names
+bundle.js  241 kB       0  [emitted]  main
+chunk    {0} bundle.js (main) 222 kB [rendered]
+.....
+webpack: Compiled successfully.
+```
+
+If you put a modification in your JS code, webpack will compile a new bundle and refresh the web page that is running it.
+
 ## References ##
 
 - React Doc - [Introducint to JSX][4]
@@ -276,6 +371,7 @@ my-app
 - Running with serve - [Share a project on your network by running just a command][6]
 - Babel Installation- [JavaScript compiler][7]
 - Babel Core - [CDN babel-core][8]
+- Webpack - [Open-source JavaScript module bundler][9]
 
 ### License ###
 
@@ -289,3 +385,4 @@ MIT
   [6]: https://www.npmjs.com/package/serve
   [7]: https://babeljs.io/docs/setup/#installation
   [8]: https://cdnjs.com/libraries/babel-core/5.8.38
+  [9]: https://webpack.js.org/guides/getting-started/
