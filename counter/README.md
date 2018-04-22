@@ -42,3 +42,63 @@ var Component = createReactClass({
   }
 });
 ```
+
+## React Concepts ##
+
+### Stateless Functional Component ###
+
+Stateless functional components take in props and return JSX elements.
+
+```jsx
+...
+render(
+  <SkiDayCount
+    total={50}
+    powder={20}
+    backcountry={10}
+    goal={100}
+  />
+```
+
+```jsx
+export const SkiDayCount = ({ total, powder, backcountry, goal }) => (
+  <div className="ski-day-count">
+    <div className="total-days">
+      <span>{total}</span>
+      <span>days</span>
+    </div>
+    <div className="powder-days">
+      <span>{powder}</span>
+      <span>days</span>
+    </div>
+    <div className="backcountry-days">
+      <span>{backcountry}</span>
+      <span>days</span>
+    </div>
+    <div>
+      <span>{goal}</span>
+    </div>
+  </div>
+)
+```
+
+### React Component ###
+
+When passing properties to a component, strings should be passed inside by `quotes`.
+
+```jsx
+...
+
+render(
+  <SkiDayCount name="MyNAME" />
+)
+```
+
+```jsx
+export const SkiDayCount = ({ name }) => (
+  <div>
+    <div>My name is:</div>
+    <div>{name}</div>
+  </div>
+)
+```
