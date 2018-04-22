@@ -1,5 +1,13 @@
 # React Components - Ski Day Count #
 
+A project as exercise from this course.
+
+## Version ##
+
+- react": ^15.3.2
+- react-dom": ^15.3.2
+- react-icons": ^2.2.7
+
 > Warning: Accessing `createClass` via the main React package is deprecated, and will be removed in React v16.0. Use a plain JavaScript class instead. If you're not yet ready to migrate, `create-react-class` v15.* is available on npm as a temporary, drop-in replacement.
 
 For more info see https://fb.me/react-create-class
