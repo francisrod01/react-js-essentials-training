@@ -102,3 +102,13 @@ export const SkiDayCount = ({ name }) => (
   </div>
 )
 ```
+
+What can you do in component methods?
+
+- concatenate strings
+- make calculations
+- fetch data from APIs
+
+Why should you use object destructuring in class components?
+
+- to cut down on unnecessary typing
