@@ -9,9 +9,11 @@ You'll understand the essentials of React.js and be able to start building your 
 
 ### Version ##
 
-- React 16.3.2
-- ReactDOM 16.3.2
-- Babel Core 5.8.38
+- react@16.3.2
+- react-dom@16.3.2
+- babel-core@5.8.38
+- webpack@1.13.3
+- json-loader@0.5.4
 
 ### React Developer Tools ###
 
@@ -363,6 +365,97 @@ webpack: Compiled successfully.
 ```
 
 If you put a modification in your JS code, webpack will compile a new bundle and refresh the web page that is running it.
+
+## Loading JSON with webpack ##
+
+Install a `json-loader` dependency
+
+```bash
+~$ yarn add -D json-loader@0.5.4
+```
+
+Change the `webpack.config.js` file and config a `json-loader` inside module loaders
+
+```js
+module: {
+  loaders: [
+    // ... babel-loader
+    {
+      test: /\.json$/,
+      exclude: /(node_modules)/,
+      loader: "json-loader"
+    }
+  ]
+}
+```
+
+Create a `./src/titles.json` file
+
+```json
+{
+  "hello": "Bonjour !",
+  "goodbye": "Au Revoir !"
+}
+```
+
+We will create two little components here, first create a titles `./src/lib.js` file
+
+```jsx
+import React from 'react'
+
+import text from './titles.json'
+
+
+export const hello = (
+  <h1
+    id="title"
+    className="header"
+    style={{ backgroundColor: 'purple', color: 'yellow' }}
+  >
+    {text.hello}
+  </h1>
+)
+
+export const goodbye = (
+  <h1
+    id="title"
+    className="header"
+    style={{ backgroundColor: 'yellow', color: 'purple' }}
+  >
+    {text.goodbye}
+  </h1>
+)
+```
+
+And we need to import titles lib and load our components inside ReactDOM render
+
+```jsx
+import React from 'react'
+import { render } from 'react-dom'
+
+import { hello, goodbye } from './lib'
+
+
+const style = {
+  backgroundColor: 'orange',
+  color: 'white',
+  fontFamily: 'verdana'
+}
+
+
+render(
+  <div>
+    {hello}
+    {goodbye}
+  </div>,
+  document.getElementById('react-container')
+)
+```
+
+We can see the result in the web browser without errors on console
+
+![Running using webpack](./screenshots/running-using-webpack.png)
+
 
 ## References ##
 
