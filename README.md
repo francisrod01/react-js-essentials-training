@@ -14,6 +14,11 @@ You'll understand the essentials of React.js and be able to start building your 
 - babel-core@5.8.38
 - webpack@1.13.3
 - json-loader@0.5.4
+- style-loader@0.13.1
+- css-loader@0.25.0
+- autoprefixer-loader@3.2.0
+- sass-loader@4.0.2
+- node-sass@^3.10.1
 
 ### React Developer Tools ###
 
@@ -456,6 +461,125 @@ We can see the result in the web browser without errors on console
 
 ![Running using webpack](./screenshots/running-using-webpack.png)
 
+## Adding CSS to webpack build ##
+
+We need to install some dependencies
+
+```bash
+~$ yarn add -D style-loader@0.13.1
+~$ yarn add -D css-loader@0.25.0
+~$ yarn add -D autoprefixer-loader@3.2.0
+~$ yarn add -D sass-loader@4.0.2
+~$ yarn add -D node-sass@^3.10.1
+```
+
+We need to put 2 loaders inside module loaders on webpack config file
+
+```js
+module: {
+  loaders: [
+    ... json-loaders
+
+    {
+      test: /\.css$/,
+      loader: "style-loader!css-loader!autoprefixer-loader"
+    },
+    {
+      test: /\.scss$/,
+      loader: "style-loader!css-loader!autoprefixer-loader!sass-loader"
+    }
+  ]
+}
+```
+
+Create the `./src/stylesheets/hello.css` file
+
+```css
+.hello {
+  background-color: indigo;
+  color: turquoise
+}
+```
+
+Create the `./src/stylesheets/goodbye.scss` file
+
+```scss
+$bg-color: turquoise;
+$text-color: indigo;
+
+.goodbye {
+  background-color: $bg-color;
+  color: $text-color;
+}
+```
+
+Change our `./src/lib.js` file and import our stylesheet files
+
+```jsx
+import React from 'react'
+
+import text from './titles.json'
+import './stylesheets/goodbye.scss'
+import './stylesheets/hello.css'
+
+
+export const hello = (
+  <h1
+    id="title"
+    className="hello"
+  >
+    {text.hello}
+  </h1>
+)
+
+export const goodbye = (
+  <h1
+    id="title"
+    className="goodbye"
+  >
+    {text.goodbye}
+  </h1>
+)
+```
+
+We can run the `start` command again
+
+```bash
+~$ yarn start
+
+$ ./node_modules/.bin/webpack-dev-server
+ http://localhost:3000/
+webpack result is served from /assets
+content is served from ./dist/
+Hash: 8ac9665f877d0ab27fe1
+Version: webpack 1.13.3
+Time: 2011ms
+    Asset     Size  Chunks             Chunk Names
+bundle.js  1.05 MB       0  [emitted]  main
+chunk    {0} bundle.js (main) 1.02 MB [rendered]
+    [0] multi main 40 bytes {0} [built]
+    [1] (webpack)-dev-server/client?http://localhost:3000 3.97 kB {0} [built]
+    [2] ./~/url/url.js 22.3 kB {0} [built]
+    ....
+```
+
+but now we can see our stylesheets processed by our new loaders on the final of this output
+
+```bash
+   [98] ./src/lib.js 765 bytes {0} [built]
+   [99] ./src/titles.json 70 bytes {0} [built]
+  [100] ./src/stylesheets/goodbye.scss 1.18 kB {0} [built]
+  [101] ./~/css-loader!./~/autoprefixer-loader!./~/sass-loader!./src/stylesheets/goodbye.scss 221 bytes {0} [built]
+  [102] ./~/css-loader/lib/css-base.js 1.51 kB {0} [built]
+  [103] ./~/style-loader/addStyles.js 7.15 kB {0} [built]
+  [104] ./src/stylesheets/hello.css 1.05 kB {0} [built]
+  [105] ./~/css-loader!./~/autoprefixer-loader!./src/stylesheets/hello.css 219 bytes {0} [built]
+webpack: Compiled successfully.
+```
+
+We can see the result in the web browser with the new styles been applied.
+
+![Running using webpack](./screenshots/compile-css-using-webpack.png)
 
 ## References ##
 
