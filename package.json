@@ -1,0 +1,19 @@
+{
+  "name": "react-js-essentials-training",
+  "version": "1.0.0",
+  "description": "A project focusing on React and related tools",
+  "main": "index.js",
+  "repository": "https://github.com/francisrod01/react-js-essentials-training",
+  "author": "Francis Rodrigues",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "serve -s ./dist -p 3000"
+  },
+  "devDependencies": {
+    "babel-cli": "6.18.0",
+    "babel-preset-latest": "6.16.0",
+    "babel-preset-react": "6.16.0",
+    "babel-preset-stage-0": "6.16.0"
+  }
+}
