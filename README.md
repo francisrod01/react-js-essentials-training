@@ -11,6 +11,7 @@ You'll understand the essentials of React.js and be able to start building your 
 
 - React 16.3.2
 - ReactDOM 16.3.2
+- Babel Core 5.8.38
 
 ### React Developer Tools ###
 
@@ -88,7 +89,7 @@ Run this command to see a list of all available options:
 ~$ serve help
 ```
 
-## Using REACTJS as Pure React ##
+## Using ReactJS as Pure React ##
 
 You can start with React as simple as a JavaScript file.
 
@@ -156,11 +157,27 @@ render(
 )
 ```
 
+## Transpiling JavaScript using Babel ##
+
+### What is Babel ###
+
+Babel is a JavaScript compiler
+
+Babel has support for the latest version of JavaScript through syntax transformers.
+
+These plugins allow you to use new syntax, right now without waiting for browser support.
+
+![Babel try it out](./screenshots/babel-try-it-out.png)
+
+You can read more about it in [Babel oficial doc][7]
+
 ## References ##
 
 - React Doc - [Introducint to JSX][4]
 - Running with httpster - [Simple http server for quick loading of content][5]
 - Running with serve - [Share a project on your network by running just a command][6]
+- Babel Installation- [JavaScript compiler][7]
+- Babel Core - [CDN babel-core][8]
 
 ### License ###
 
@@ -172,3 +189,5 @@ MIT
   [4]: https://reactjs.org/docs/introducing-jsx.html
   [5]: https://www.npmjs.com/package/httpster
   [6]: https://www.npmjs.com/package/serve
+  [7]: https://babeljs.io/docs/setup/#installation
+  [8]: https://cdnjs.com/libraries/babel-core/5.8.38
