@@ -60,6 +60,8 @@ render(
   />
 ```
 
+Our Stateless functional component that receive all this props is below:
+
 ```jsx
 export const SkiDayCount = ({ total, powder, backcountry, goal }) => (
   <div className="ski-day-count">
@@ -94,13 +96,22 @@ render(
 )
 ```
 
+Our React component that receive props is below:
+
 ```jsx
-export const SkiDayCount = ({ name }) => (
-  <div>
-    <div>My name is:</div>
-    <div>{name}</div>
-  </div>
-)
+import { Component } from 'react'
+
+export class SkiDayCount extends Component {
+  render() {
+    const { name } = this.props
+    return (
+      <div>
+        <div>My name is:</div>
+        <div>{name}</div>
+      </div>
+    )
+  }
+}
 ```
 
 What can you do in component methods?
