@@ -39,3 +39,10 @@ export const SkiDayCount = ({ total, powder, backcountry, goal }) => (
     </div>
   </div>
 )
+
+SkiDayCount.propTypes = {
+  total: PropTypes.number,
+  powder: PropTypes.number,
+  backcountry: PropTypes.number,
+  goal: PropTypes.number
+}

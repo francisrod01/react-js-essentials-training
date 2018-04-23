@@ -123,3 +123,8 @@ What can you do in component methods?
 Why should you use object destructuring in class components?
 
 - to cut down on unnecessary typing
+
+### More concepts ###
+
+- Default pros
+- Validating with PropTypes
