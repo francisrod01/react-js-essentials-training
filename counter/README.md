@@ -153,6 +153,101 @@ For how many components can you set up propTypes?
 
 - as many as you have
 
+### Using refs in Components ###
+
+We can use `refs` in ES6 classes as below:
+
+```jsx
+import { Component } from 'react'
+import PropTypes from 'prop-types'
+
+export class AddDayForm extends Component {
+  constructor(props) {
+    super(props)
+
+    // Binders
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleSubmit(event) {
+    event.preventDefault()
+
+    console.log('resort', this.refs.resort.value)
+  }
+  render() {
+    const { resort, date, powder, backcountry } = this.props
+
+    return (
+      <form onSubmit={this.handleSubmit} className="add-day-form">
+
+        <div>
+          <label htmlFor="resort">Resort Name</label>
+          <input
+            id="resort"
+            type="text"
+            required
+            defaultValue={resort}
+            ref="resort"
+          />
+        </div>
+
+        <button>Add Day</button>
+      </form>
+    )
+  }
+}
+
+AddDayForm.defaultProps = {
+  resort: "Kirkwood",
+  date: "2017-02-12",
+  powder: true,
+  backcountry: false
+}
+
+AddDayForm.propTypes = {
+  resort: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  powder: PropTypes.bool.isRequired,
+  backcountry: PropTypes.bool.isRequired
+}
+```
+
+### Using refs in stateless components ###
+
+As the name says, `stateless` component doest not manage state, so we can refactor this code as below:
+
+```jsx
+import PropTypes from 'prop-types'
+
+export const AddDayForm = ( { resort, date, powder, backcountry }) => {
+  let _resort
+
+  const handleSubmit => (event) => {
+    event.preventDefault()
+
+    console.log('resort', _resort.value)
+  }
+  return (
+    <form onSubmit={handleSubmit} className="add-day-form">
+
+      <div>
+        <label htmlFor="resort">Resort Name</label>
+        <input
+          id="resort"
+          type="text"
+          required
+          defaultValue={resort}
+          ref={input => _resort => input}
+        />
+      </div>
+
+      <button>Add Day</button>
+    </form>
+  )
+}
+
+... our prop types here.
+```
+
 ### More concepts ###
 
 - Default pros
