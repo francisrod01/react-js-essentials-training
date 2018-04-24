@@ -9,35 +9,30 @@ A project as exercise from this course.
 - react-icons: ^2.2.7
 - react-router: ^3.0.0
 
-> Warning: Accessing `createClass` via the main React package is deprecated, and will be removed in React v16.0. Use a plain JavaScript class instead. If you're not yet ready to migrate, `create-react-class` v15.* is available on npm as a temporary, drop-in replacement.
+## React Router ##
 
-For more info see https://fb.me/react-create-class
+React Router is a complete routing library for React.
 
-React removed `createClass` from version 16. You can use `create-react-class` to migrate easily as shown in react documentation.
+Components are the heart of React's powerful, declarative programming model. React Router is a collection of `navigational components` that compose declaratively with your application. Whether you want to have `bookmarkable URLs` for your web app or a composable way to navigate in `React Native`, React Router works wherever React is rendering--so take your pick!
 
-Before (15.4 and below)
+### Concepts ###
 
-```js
-var React = require('react');
+The react-router is a tool that helps you ...
 
-var Component = React.createClass({
-  mixins: [MixinA],
-  render() {
-    return <Child />;
-  }
-});
-```
+- `dynamically display the page we want to see`.
 
-After (15.5)
+What type of HTML element is a Link component converted to?
 
-```js
-var React = require('react');
-var createReactClass = require('create-react-class');
+- `<a> tag`
 
-var Component = createReactClass({
-  mixins: [MixinA],
-  render() {
-    return <Child />;
-  }
-});
-```
+Why might you use router parameters?
+
+- `to go to a different route based on a filter`
+
+### References ###
+
+- [Declarative routing for React][1]
+- [React Router Training][2]
+
+  [1]: https://reacttraining.com/react-router/
+  [2]: https://reacttraining.com/react-router/
