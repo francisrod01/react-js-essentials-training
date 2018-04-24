@@ -1,0 +1,11 @@
+# node modules
+node_modules/
+
+# log files
+*.log
+
+# VsCode features
+.history/
+
+# VsCode editor config
+.editorconfig
