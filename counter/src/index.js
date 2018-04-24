@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { render } from 'react-dom'
 import { Router, Route, hashHistory } from 'react-router'
 
+import './stylesheets/ui.scss'
+import './stylesheets/index.scss'
+
 import { App } from './components/App'
 import { Whoops404 } from './components/Whoops404'
 

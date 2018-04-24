@@ -24,27 +24,23 @@ export const AddDayForm = ({ resort, date, powder, backcountry, onNewDay }) => {
   return (
     <form onSubmit={handleSubmit} className="add-day-form">
 
-      <div>
-        <label htmlFor="resort">Resort Name</label>
-        <input
-          id="resort"
-          type="text"
-          required
-          defaultValue={resort}
-          ref={input => _resort = input}
-        />
-      </div>
+      <label htmlFor="resort">Resort Name</label>
+      <input
+        id="resort"
+        type="text"
+        required
+        defaultValue={resort}
+        ref={input => _resort = input}
+      />
 
-      <div>
-        <label htmlFor="date">Date</label>
-        <input
-          id="date"
-          type="date"
-          required
-          defaultValue={date}
-          ref={input => _date = input}
-        />
-      </div>
+      <label htmlFor="date">Date</label>
+      <input
+        id="date"
+        type="date"
+        required
+        defaultValue={date}
+        ref={input => _date = input}
+      />
 
       <div>
         <input
