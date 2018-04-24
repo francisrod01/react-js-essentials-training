@@ -3,11 +3,25 @@ import PropTypes from 'prop-types'
 
 
 export class AddDayForm extends Component {
+  constructor(props) {
+    super(props)
+
+    // Binders
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleSubmit(event) {
+    event.preventDefault()
+
+    console.log('resort', this.refs.resort.value)
+    console.log('date', this.refs.date.value)
+    console.log('powder', this.refs.powder.checked)
+    console.log('backcountry', this.refs.backcountry.checked)
+  }
   render() {
     const { resort, date, powder, backcountry } = this.props
 
     return (
-      <form className="add-day-form">
+      <form onSubmit={this.handleSubmit} className="add-day-form">
 
         <div>
           <label htmlFor="resort">Resort Name</label>
@@ -16,6 +30,7 @@ export class AddDayForm extends Component {
             type="text"
             required
             defaultValue={resort}
+            ref="resort"
           />
         </div>
 
@@ -26,6 +41,7 @@ export class AddDayForm extends Component {
             type="date"
             required
             defaultValue={date}
+            ref="date"
           />
         </div>
 
@@ -34,6 +50,7 @@ export class AddDayForm extends Component {
             id="powder"
             type="checkbox"
             defaultChecked={powder}
+            ref="powder"
           />
           <label htmlFor="powder">Powder Day</label>
         </div>
@@ -43,9 +60,12 @@ export class AddDayForm extends Component {
             id="backcountry"
             type="checkbox"
             defaultChecked={backcountry}
+            ref="backcountry"
           />
           <label htmlFor="backcountry">Backcountry Day</label>
         </div>
+
+        <button>Add Day</button>
       </form>
     )
   }
