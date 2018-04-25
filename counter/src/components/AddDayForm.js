@@ -1,5 +1,41 @@
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 
+
+const tahoeResorts = [
+  "Alpine Meadows",
+  "Boreal",
+  "Diamond Peak",
+  "Donner Ski Ranch",
+  "Heavenly",
+  "Homewood",
+  "Kirkwood",
+  "Mt. Rose",
+  "Northstar",
+  "Squaw Valley",
+  "Sugar Bowl"
+]
+
+class Autocomplete extends Component {
+  get value() {
+    return this.refs.inputResort.value
+  }
+  set value(inputValue) {
+    this.refs.inputResort.value = inputValue
+  }
+  render() {
+    return (
+      <div>
+        <input ref="inputResort" type="text" list="tahoe-resorts" />
+        <datalist id="tahoe-resorts">
+          {this.props.options.map((opt, i) => (
+            <option key={i}>{opt}</option>
+          ))}
+        </datalist>
+      </div>
+    )
+  }
+}
 
 export const AddDayForm = ({ resort, date, powder, backcountry, onNewDay }) => {
   
@@ -25,11 +61,7 @@ export const AddDayForm = ({ resort, date, powder, backcountry, onNewDay }) => {
     <form onSubmit={handleSubmit} className="add-day-form">
 
       <label htmlFor="resort">Resort Name</label>
-      <input
-        id="resort"
-        type="text"
-        required
-        defaultValue={resort}
+      <Autocomplete options={tahoeResorts}
         ref={input => _resort = input}
       />
 
