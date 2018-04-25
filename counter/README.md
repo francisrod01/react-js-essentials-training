@@ -248,6 +248,28 @@ export const AddDayForm = ( { resort, date, powder, backcountry }) => {
 ... our prop types here.
 ```
 
+### Forms and refs ###
+
+A datalist tag only exists in JSX
+
+- FALSE -`A datalist tag is an HTML tag not a JSX-specific tag.`
+
+Refs are impossible to use in stateless components
+
+- FALSE - `Refs can be used in any components.`
+
+Refs are used to judge the behavior of components
+
+- FALSE - `Refs are used to check in on components to see what the current values of props are.`
+
+In a form that uses JSX, how do you set the default of a checkbox to be the value of a property?
+
+- `Add the defaultChecked attribute`
+
+Why do you have to bind the addDay method?
+
+- `so this' is kept in scope.`
+
 ### More concepts ###
 
 - Default pros
