@@ -14,7 +14,7 @@ export class App extends Component {
       allSkiDays: [
         {
           resort: "Squaw Valley",
-          date: "2018",
+          date: "2018-01-02",
           powder: true,
           backcountry: false
         },
