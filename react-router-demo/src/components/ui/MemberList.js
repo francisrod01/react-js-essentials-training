@@ -10,7 +10,11 @@ class MemberList extends Component {
     this.state = {
       members: [],
       loading: false,
+      administrators: [],
     }
+
+    this.makeAdmin = this.makeAdmin.bind(this)
+    this.removeAdmin = this.removeAdmin.bind(this)
   }
   componentDidMount() {
     this.setState({
@@ -25,6 +29,20 @@ class MemberList extends Component {
           loading: false,
         })
       })
+  }
+  makeAdmin(email) {
+    const administrators = [
+      ...this.state.administrators,
+      email,
+    ]
+
+    this.setState({ administrators })
+  }
+  removeAdmin(email) {
+    const administrators = this.state.administrators
+      .filter(adminEmail => adminEmail !== email)
+    
+    this.setState({ administrators })
   }
   render() {
     const { members, loading } = this.state
@@ -42,9 +60,14 @@ class MemberList extends Component {
           members.map((member, i) => (
             <Member
               key={i}
+              admin={this.state.administrators.some(
+                adminEmail => adminEmail === member.email
+              )}
               name={member.name.first + ' ' + member.name.last}
               email={member.email}
               thumbnail={member.picture.thumbnail}
+              makeAdmin={this.makeAdmin}
+              removeAdmin={this.removeAdmin}
             />
           )):
           <span>Currently 0 Members</span>

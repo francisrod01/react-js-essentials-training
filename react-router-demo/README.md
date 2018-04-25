@@ -4,6 +4,8 @@ A project as exercise from this course.
 
 ![React Router Members](./screenshots/react-router-members.png)
 
+![React Router - Society Members](./screenshots/react-router-demo--society-members.png)
+
 ## Version ##
 
 - react: ^15.3.2

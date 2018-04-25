@@ -5,9 +5,8 @@ import { Router, Route, hashHistory } from 'react-router'
 
 import './app.css'
 
-// import routes from './routes'
-import MemberList from './components/ui/MemberList'
+import routes from './routes'
 
 window.React = React
 
-render(<MemberList />, document.getElementById('react-container'))
+render(routes, document.getElementById('react-container'))
