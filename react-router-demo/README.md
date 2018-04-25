@@ -19,7 +19,7 @@ A project as exercise from this course.
 
 Components are the heart of React's powerful, declarative programming model. React Router is a collection of `navigational components` that compose declaratively with your application. Whether you want to have `bookmarkable URLs` for your web app or a composable way to navigate in `React Native`, React Router works wherever React is rendering--so take your pick!
 
-### Concepts ###
+### Concepts about React Router ###
 
 The react-router is a tool that helps you ...
 
@@ -45,6 +45,16 @@ In applications with many components, it’s very important to free up resources
 - `componentWillUpdate`
 - `render`
 - `componentDidUpdate`
+
+### Concepts about Lifecycle ###
+
+Component lifecycle methods can be used in createClass and ES6 Class components.
+
+- TRUE
+
+Why might you use shouldComponentUpdate?
+
+- `to avoid rendering when it's unnecessary`
 
 ### References ###
 
